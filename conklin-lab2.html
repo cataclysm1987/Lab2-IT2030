@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8"/>
+   <style>
+   
+   </style>
+   <title>IT 2320 - Lab 2</title>
+   <pre>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script>
+      "use strict";
+	  
+	  // set up an array and initialize the first two values
+	  var fibArray = [];
+	  fibArray[0] = 0;
+	  fibArray[1] = 1;
+	  
+	  // declare a variable for the size of the squence 
+	  var fibNum;
+	  
+	  // prompt user for how many 
+	  fibNum = prompt("Please enter the total number of fibonacci sequences.", "");
+	  var attempts = 0;
+	  
+	  while (isNaN(parseInt(fibNum)) && attempts < 10){
+		  attempts++;
+		  fibNum = prompt("Please enter the total number of fibonacci sequences.", "");
+	  }
+	  if (attempts == 10){
+		  alert("We were not able to get the appropriate input for your fibonacci sequence. Please enter an integer value. ");
+	  } else if (fibNum < 3){
+		  alert("You must enter a number 3 or greater");
+	  } else {
+		for (var i=2; i<fibNum; i++) {
+			var add = fibArray[i - 1] + fibArray[i - 2];
+			fibArray.push(add);
+		}
+		var fibstring = "";
+		for (i = 0; i < fibArray.length; i++){
+			fibstring += fibArray[i] + ", ";
+			
+		}
+		
+		$("#fibonacci-output").html(fibstring);
+
+		var goldenratio = fibArray[fibArray.length - 1] / fibArray[fibArray.length - 2];
+		var golden = $("#golden-ratio");
+		
+	  }
+	  $(document).ready(function(){
+		document.getElementById("fibonacci-output").innerHTML = fibstring;
+		document.getElementById("golden-ratio").innerHTML = goldenratio;
+	  });
+   
+   </script>
+   </pre>
+</head>
+<body>
+   <h2>Eric Conklin - IT 2320 - Lab 2</h2>
+   <p>Welcome to the fibonacci sequence. Here are your fibonacci numbers: </p>
+   <p id="fibonacci-output"></p>
+   <p >Your golden ratio from this sequence is: </p>
+   <p id="golden-ratio"></p>
+</body>
+
+</html>
